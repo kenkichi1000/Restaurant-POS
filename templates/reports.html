@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales & Analytics Reports - GourmetPOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="gradient-bg">
+
+  <nav class="navbar glass-nav" aria-label="Main">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">📊</div>
+      <span>GourmetPOS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/pos">POS Terminal</a></li>
+      <li><a href="/kitchen">Kitchen Display</a></li>
+      <li><a href="/billing">Billing</a></li>
+      <li><a href="/reports" class="active" aria-current="page">Reports</a></li>
+    </ul>
+  </nav>
+
+  <div class="app-viewport">
+    <div class="reports-layout">
+
+      <!-- Key figures -->
+      <div class="metrics-grid">
+        <div class="glass-card metric-card">
+          <span class="metric-label">Total revenue</span>
+          <div class="metric-value">$1,284.50</div>
+          <span class="metric-sub text-success">+14% from yesterday</span>
+        </div>
+        <div class="glass-card metric-card">
+          <span class="metric-label">Total orders</span>
+          <div class="metric-value">86</div>
+          <span class="metric-sub">+8 from yesterday</span>
+        </div>
+        <div class="glass-card metric-card">
+          <span class="metric-label">Average order value</span>
+          <div class="metric-value">$14.94</div>
+          <span class="metric-sub">Unchanged from yesterday</span>
+        </div>
+        <div class="glass-card metric-card">
+          <span class="metric-label">Top selling item</span>
+          <div class="metric-value">Truffle Burger</div>
+          <span class="metric-sub">42 orders today</span>
+        </div>
+      </div>
+
+      <div class="reports-grid">
+        <!-- Sales by hour -->
+        <section class="glass-card report-card">
+          <div class="section-header">
+            <h2>Daily sales overview</h2>
+            <select class="glass-select" aria-label="Report period">
+              <option>Today</option>
+              <option>This week</option>
+              <option>This month</option>
+            </select>
+          </div>
+          <div class="chart-placeholder">
+            <div class="bar-chart" role="img" aria-label="Sales by hour: lowest at 10 AM, rising to a peak at 8 PM">
+              <div class="bar" style="--height: 40%;" data-label="10 AM"></div>
+              <div class="bar" style="--height: 70%;" data-label="12 PM"></div>
+              <div class="bar" style="--height: 95%;" data-label="2 PM"></div>
+              <div class="bar" style="--height: 60%;" data-label="4 PM"></div>
+              <div class="bar" style="--height: 85%;" data-label="6 PM"></div>
+              <div class="bar" style="--height: 100%;" data-label="8 PM"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Category split -->
+        <section class="glass-card report-card">
+          <div class="section-header">
+            <h2>Category performance</h2>
+          </div>
+          <div class="category-breakdown">
+            <div class="category-progress-item">
+              <div class="progress-info">
+                <span>Burgers &amp; mains</span>
+                <strong>58% ($745.00)</strong>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 58%;"></div></div>
+            </div>
+            <div class="category-progress-item">
+              <div class="progress-info">
+                <span>Beverages</span>
+                <strong>27% ($346.80)</strong>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 27%;"></div></div>
+            </div>
+            <div class="category-progress-item">
+              <div class="progress-info">
+                <span>Desserts</span>
+                <strong>15% ($192.70)</strong>
+              </div>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 15%;"></div></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Billing & Orders - GourmetPOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="gradient-bg">
+
+  <nav class="navbar glass-nav" aria-label="Main">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">💳</div>
+      <span>GourmetPOS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/pos">POS Terminal</a></li>
+      <li><a href="/kitchen">Kitchen Display</a></li>
+      <li><a href="/billing" class="active" aria-current="page">Billing</a></li>
+      <li><a href="/reports">Reports</a></li>
+    </ul>
+  </nav>
+
+  <div class="app-viewport">
+    <div class="billing-grid">
+
+      <!-- Recent orders -->
+      <section class="glass-card billing-list-section">
+        <div class="section-header">
+          <h2>Recent orders</h2>
+          <input type="search" class="search-input" aria-label="Search orders"
+                 placeholder="Search order ID or type"
+                 oninput="filterOrders(this.value)">
+        </div>
+
+        <div class="table-responsive">
+          <table class="glass-table">
+            <thead>
+              <tr>
+                <th scope="col">Order</th>
+                <th scope="col">Type</th>
+                <th scope="col">Items</th>
+                <th scope="col">Total</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody id="ordersBody">
+              <tr data-order="101" data-total="38.32">
+                <td><strong>#101</strong></td>
+                <td>Dine-in</td>
+                <td>2x Truffle Burger, 1x Latte</td>
+                <td>$38.32</td>
+                <td><span class="badge badge-success">Paid</span></td>
+                <td><button type="button" class="btn btn-secondary btn-sm" onclick="printReceipt('101')">Print receipt</button></td>
+              </tr>
+              <tr data-order="102" data-total="20.79">
+                <td><strong>#102</strong></td>
+                <td>Takeaway</td>
+                <td>1x Margherita Pizza, 1x Cheesecake</td>
+                <td>$20.79</td>
+                <td><span class="badge badge-warning">Pending</span></td>
+                <td><button type="button" class="btn btn-primary btn-sm" onclick="processPayment('102')">Settle bill</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="empty-state" id="ordersEmpty" hidden>No orders match your search.</p>
+        </div>
+      </section>
+
+      <!-- Receipt preview -->
+      <aside class="glass-card receipt-preview-section" aria-label="Receipt preview">
+        <div class="receipt-header">
+          <h3>Receipt preview</h3>
+          <span class="receipt-id" id="receiptId">#101</span>
+        </div>
+        <div class="receipt-body">
+          <div class="receipt-brand">GourmetPOS Resto</div>
+          <div class="receipt-date">Sep 29, 2026 - 08:30 PM</div>
+          <hr class="dashed-divider">
+          <div class="receipt-items">
+            <div class="receipt-row"><span>2x Truffle Burger</span><span>$29.98</span></div>
+            <div class="receipt-row"><span>1x Artisan Iced Latte</span><span>$5.50</span></div>
+          </div>
+          <hr class="dashed-divider">
+          <div class="receipt-row"><span>Subtotal</span><span>$35.48</span></div>
+          <div class="receipt-row"><span>Tax (8%)</span><span>$2.84</span></div>
+          <div class="receipt-row total"><span>Total paid</span><span>$38.32</span></div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="window.print()">Print invoice</button>
+      </aside>
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

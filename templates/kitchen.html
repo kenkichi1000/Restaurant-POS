@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kitchen Display - GourmetPOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="gradient-bg">
+
+  <nav class="navbar glass-nav" aria-label="Main">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">🍳</div>
+      <span>GourmetPOS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/pos">POS Terminal</a></li>
+      <li><a href="/kitchen" class="active" aria-current="page">Kitchen Display</a></li>
+      <li><a href="/billing">Billing</a></li>
+      <li><a href="/reports">Reports</a></li>
+    </ul>
+  </nav>
+
+  <div class="app-viewport">
+    <div class="kds-grid">
+
+      <article class="kds-card glass-card" data-state="queued">
+        <div class="kds-header">
+          <span class="order-id">Order #101 <span class="kds-sub">Dine in</span></span>
+          <span class="order-timer" data-elapsed="252">04:12</span>
+        </div>
+        <span class="badge kds-status">New</span>
+        <ul class="kds-list">
+          <li class="kds-item">2x Truffle Burger</li>
+          <li class="kds-item">1x Artisan Iced Latte</li>
+        </ul>
+        <button type="button" class="btn btn-primary" onclick="advanceTicket(this)">Start preparing</button>
+      </article>
+
+      <article class="kds-card glass-card preparing" data-state="preparing">
+        <div class="kds-header">
+          <span class="order-id">Order #102 <span class="kds-sub">Takeaway</span></span>
+          <span class="order-timer" data-elapsed="105">01:45</span>
+        </div>
+        <span class="badge badge-muted kds-status">Preparing</span>
+        <ul class="kds-list">
+          <li class="kds-item">1x Margherita Pizza</li>
+          <li class="kds-item">1x Matcha Cheesecake</li>
+        </ul>
+        <button type="button" class="btn btn-primary" onclick="advanceTicket(this)">Mark as ready</button>
+      </article>
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

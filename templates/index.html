@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GourmetPOS - Smart Restaurant Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="gradient-bg">
+
+  <nav class="navbar glass-nav" aria-label="Main">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">⚡</div>
+      <span>GourmetPOS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/" class="active" aria-current="page">Home</a></li>
+      <li><a href="/pos">POS Terminal</a></li>
+      <li><a href="/kitchen">Kitchen Display</a></li>
+      <li><a href="/billing">Billing</a></li>
+      <li><a href="/reports">Reports</a></li>
+    </ul>
+  </nav>
+
+  <main class="hero-container">
+    <div class="hero-card glass-card">
+      <span class="hero-badge">Restaurant point of sale</span>
+      <h1>Take orders, feed the kitchen, close the bill</h1>
+      <p>One system for the counter, the kitchen and the cash desk, so every order moves from table to payment without being retyped.</p>
+
+      <div class="hero-actions">
+        <a href="/pos" class="btn btn-primary btn-lg">Open POS terminal</a>
+        <a href="/kitchen" class="btn btn-secondary btn-lg">Open kitchen display</a>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🚀</div>
+          <h3>Fast ordering</h3>
+          <p>Tap an item to add it. Totals and tax update instantly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🍳</div>
+          <h3>Kitchen tickets</h3>
+          <p>Orders appear on the kitchen screen the moment they are sent.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon" aria-hidden="true">📊</div>
+          <h3>Daily reports</h3>
+          <p>See revenue, order counts and best sellers at a glance.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="landing-footer">
+    <p>&copy; 2026 GourmetPOS. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

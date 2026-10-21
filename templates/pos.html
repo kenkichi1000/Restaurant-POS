@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Terminal - GourmetPOS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="gradient-bg">
+
+  <nav class="navbar glass-nav" aria-label="Main">
+    <div class="brand">
+      <div class="brand-icon" aria-hidden="true">⚡</div>
+      <span>GourmetPOS</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/pos" class="active" aria-current="page">POS Terminal</a></li>
+      <li><a href="/kitchen">Kitchen Display</a></li>
+      <li><a href="/billing">Billing</a></li>
+      <li><a href="/reports">Reports</a></li>
+    </ul>
+  </nav>
+
+  <div class="app-viewport">
+    <div class="pos-layout">
+
+      <!-- Left panel: menu -->
+      <section class="menu-container glass-card" aria-label="Menu">
+        <div class="category-bar">
+          <button type="button" class="category-pill active" onclick="filterCategory('all', this)">All items</button>
+          <button type="button" class="category-pill" onclick="filterCategory('mains', this)">🍔 Mains</button>
+          <button type="button" class="category-pill" onclick="filterCategory('drinks', this)">☕ Beverages</button>
+          <button type="button" class="category-pill" onclick="filterCategory('desserts', this)">🍰 Desserts</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+          <button type="button" class="menu-card" data-category="mains" onclick="addToCart('Truffle Burger', 14.99, 1)">
+            <span class="badge">Popular</span>
+            <span class="item-name">Truffle Burger</span>
+            <span class="item-price">$14.99</span>
+          </button>
+          <button type="button" class="menu-card" data-category="drinks" onclick="addToCart('Artisan Iced Latte', 5.50, 2)">
+            <span class="item-name">Artisan Iced Latte</span>
+            <span class="item-price">$5.50</span>
+          </button>
+          <button type="button" class="menu-card" data-category="mains" onclick="addToCart('Margherita Pizza', 12.00, 3)">
+            <span class="item-name">Margherita Pizza</span>
+            <span class="item-price">$12.00</span>
+          </button>
+          <button type="button" class="menu-card" data-category="desserts" onclick="addToCart('Matcha Cheesecake', 7.25, 4)">
+            <span class="badge">New</span>
+            <span class="item-name">Matcha Cheesecake</span>
+            <span class="item-price">$7.25</span>
+          </button>
+          <p class="empty-state" id="menuEmpty" hidden>Nothing in this category yet.</p>
+        </div>
+      </section>
+
+      <!-- Right panel: cart -->
+      <aside class="cart-panel glass-card" aria-label="Current order">
+        <div class="cart-header">
+          <h2 id="orderNumber">Order #104</h2>
+          <div class="order-type-toggle" role="group" aria-label="Order type">
+            <button type="button" class="toggle-btn active" aria-pressed="true" onclick="setOrderType(this, 'Dine-In')">Dine in</button>
+            <button type="button" class="toggle-btn" aria-pressed="false" onclick="setOrderType(this, 'Takeaway')">Takeaway</button>
+          </div>
+        </div>
+
+        <div class="cart-items" id="cartContainer"></div>
+
+        <div class="cart-footer">
+          <div class="bill-line">
+            <span>Subtotal</span>
+            <span id="subtotalVal">$0.00</span>
+          </div>
+          <div class="bill-line">
+            <span>Tax (8%)</span>
+            <span id="taxVal">$0.00</span>
+          </div>
+          <div class="bill-line total">
+            <span>Total</span>
+            <span id="totalVal">$0.00</span>
+          </div>
+          <button type="button" class="btn btn-primary" id="submitOrderBtn" onclick="submitOrder()" disabled>
+            Send to kitchen
+          </button>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
